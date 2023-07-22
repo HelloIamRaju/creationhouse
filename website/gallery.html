@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gallery</title>
+  <style>
+    /* Reset default margin and padding */
+  * {
+      margin: 0;
+      padding: 0;
+  }
+  
+  /* Style the header */
+  .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding:10px;
+      color: black;
+      z-index: 999; /* Set a high z-index to ensure it appears on top */
+  }
+  
+  .logo img {
+      height: 50px;
+  }
+  
+  /* Style the navigation menu */
+  .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding:0;
+      display: flex;
+  }
+  
+  .navbar li {
+      margin-left: 10px;
+      padding-right: 40px;
+  }
+  
+  .navbar li a {
+      font-family:courier;
+      color: black;
+      text-decoration: none;
+      position: relative;
+      font-weight:bold
+  }
+  
+  .navbar li a:hover {
+      text-decoration: none;
+  }
+  
+  .navbar li a::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color:#07de6f;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      transform-origin: center;
+      transition: transform 0.3s ease-in-out;
+  }
+  
+  .navbar li a:hover::after {
+      transform: translateX(-50%) scaleX(1);
+  }
+  
+  
+    body {
+      background-image: url(background.jpg);
+      background-color:black;
+      background-size: cover;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+    
+    .gallery-title {
+      margin-top: 150px;
+      font-size: 48px;
+      position: relative;
+      display: inline-block;
+      letter-spacing: 5px;
+      color:white;
+      border:2px solid white;
+      transition:0.3s;
+      padding:0px 10px
+    }
+    .gallery-title:hover{
+        border:2px solid #32d972;
+        transform:scale(1.05);
+        cursor:pointer
+
+    }
+    
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-top: 50px;
+    }
+    
+    .gallery-item {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 10px;
+      position: relative;
+      box-shadow: 0 0 5px black;
+      transition: 0.2s;
+      border-radius: 2px solid black;;
+      margin:50px 50px
+  
+    }
+    
+    .gallery-item:hover {
+      border: 2px solid white;
+      transform: scale(1.05);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background-color: black;
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.2);
+    }
+    
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .overlay-text {
+      color: white;
+      font-size: 16px;
+      padding: 10px;
+      text-align: center;
+    }
+    
+    .gallery-item:hover .overlay {
+      opacity: 1;
+    }
+    
+    .description {
+      margin-top: 100px;
+      text-align: center;
+      color: white;
+      border: 2px solid white;
+      padding: 20px;
+      font-family:serif;
+      letter-spacing:1px
+    }
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="games.html">Games</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <h1 class="gallery-title">Gallery</h1>
+  
+  <section class="gallery">
+    <div class="gallery-item">
+      <img src="g1.jpg" alt="Image 1">
+      <div class="overlay">
+        <div class="overlay-text">Samrit uprety</div>
+      </div>
+    </div>
+    
+    <div class="gallery-item">
+      <img src="g2.jpg" alt="Image 2">
+      <div class="overlay">
+        <div class="overlay-text">Text 2</div>
+      </div>
+    </div>
+    
+    <div class="gallery-item">
+      <img src="g3.jpg" alt="Image 3">
+      <div class="overlay">
+        <div class="overlay-text">Text 10</div>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+        <img src="g4.jpg" alt="Image 3">
+        <div class="overlay">
+          <div class="overlay-text">Text 10</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="g5.jpg" alt="Image 3">
+        <div class="overlay">
+          <div class="overlay-text">Text 10</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="g6.jpg" alt="Image 3">
+        <div class="overlay">
+          <div class="overlay-text">Text 10</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="g7.jpg" alt="Image 3">
+        <div class="overlay">
+          <div class="overlay-text">Text 10</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="g7.jpg" alt="Image 3">
+        <div class="overlay">
+          <div class="overlay-text">Text 10</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="g6.jpg" alt="Image 3">
+        <div class="overlay">
+          <div class="overlay-text">Text 10</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="g5.jpg" alt="Image 3">
+        <div class="overlay">
+          <div class="overlay-text">Text 10</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="g4.jpg" alt="Image 3">
+        <div class="overlay">
+          <div class="overlay-text">Text 10</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="g3.jpg" alt="Image 3">
+        <div class="overlay">
+          <div class="overlay-text">Text 10</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="g2.jpg" alt="Image 3">
+        <div class="overlay">
+          <div class="overlay-text">Text 10</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="g1.jpg" alt="Image 3">
+        <div class="overlay">
+          <div class="overlay-text">Text 10</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="g1.jpg" alt="Image 3">
+        <div class="overlay">
+          <div class="overlay-text">Text 10</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="g2.jpg" alt="Image 3">
+        <div class="overlay">
+          <div class="overlay-text">Text 10</div>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="g3.jpg" alt="Image 3">
+        <div class="overlay">
+          <div class="overlay-text">Text 10</div>
+        </div>
+      </div>
+  </section>
+  
+  <div class="description">
+
+        <div>
+            <p><strong>Welcome to the Design Marvels Gallery!</strong></p>
+        </div>
+    
+        <div>
+            <p>
+                Prepare to be enchanted as you step into the immersive realm of the Design Marvels Gallery, a haven of creativity and innovation brought to life by our exceptional Graphics Design Agency. From captivating logos to eye-catching banners, from artistic posters to captivating leaflets – our diverse collection celebrates the essence of visual storytelling.
+            </p>
+        </div>
+    
+        <div>
+            <p><strong>1. Logo Design - Unveiling Identities:</strong>
+                Discover the power of a well-crafted logo as we present a kaleidoscope of brand identities that speak volumes. Witness how our designs capture the essence of each brand, conveying its unique story and values through simple yet impactful visuals.
+            </p>
+        </div>
+    
+        <div>
+            <p><strong>2. Banner Design - Captivating Visual Spectacles:</strong>
+                Feast your eyes on a stunning display of banners that breathe life into events, products, and promotions. Each banner is meticulously crafted to make a lasting impression, leaving viewers spellbound and eager to engage.
+            </p>
+        </div>
+    
+        <div>
+            <p><strong>3. Poster Artistry - Where Vision Meets Impact:</strong>
+                Enter a world of bold expression and artistic prowess with our poster exhibition. Marvel at the blend of design and communication that inspires action and leaves an indelible mark on the minds of onlookers.
+            </p>
+        </div>
+    
+        <div>
+            <p><strong>4. Leaflet Design - Crafting Stories Within Folds:</strong>
+                In the leaflet gallery, explore the art of compact storytelling. Our leaflets are a harmonious balance of creative visuals and persuasive copy, enticing readers to delve deeper into the narratives they hold.
+            </p>
+        </div>
+    
+        <div>
+            <p><strong>5. Flex Print - Colors Unleashed:</strong>
+                Witness the symphony of colors and the precision of design in our flex print exhibit. From captivating hoardings to stunning backdrops, experience how our printed visuals create impactful impressions.
+            </p>
+        </div>
+    
+        <div>
+            <p><strong>6. ID Cards - Identity Redefined:</strong>
+                Discover the fusion of design and functionality in our ID card collection. Each card is a reflection of the individual or organization it represents, combining security and style seamlessly.
+            </p>
+        </div>
+    
+        <div>
+            <p><strong>7. Token of Love - Celebrating Relationships:</strong>
+                Immerse yourself in the beauty of heartfelt creations as we showcase tokens of love that celebrate special connections. Witness personalized designs that capture emotions in the most delicate and meaningful manner.
+            </p>
+        </div>
+    
+        <div>
+            <p><strong>8. Medals - For the Champions:</strong>
+                Step into a world of achievement and excellence as our medal exhibit shines a light on bespoke designs that honor extraordinary accomplishments. Each medal is a testament to the dedication and hard work of its recipient.
+            </p>
+        </div>
+    
+        <div>
+            <p><strong>9. Flags - Emblems of Pride:</strong>
+                In our flags display, explore the symbolism of nations, organizations, and events. Feel the essence of pride and unity as our designs wave high, representing a diverse tapestry of cultures and causes.
+            </p>
+        </div>
+    
+        <div>
+            <p>
+                At Design Marvels, we are more than designers – we are storytellers, weaving tales of art and emotion through our creations. Our gallery is a testament to the belief that design has the power to transform ideas into reality and leave an everlasting impact.
+            </p>
+        </div>
+    
+        <div>
+            <p>
+                Visit our gallery today and witness the confluence of artistry, innovation, and passion. Immerse yourself in the world of graphic design excellence and be inspired to embark on your creative journey with us.
+            </p>
+        </div>
+
+            <p>Our agency specializes in creating visually stunning designs that captivate audiences and convey powerful messages. With a team of talented designers, we strive to deliver exceptional results for every project.</p>
+  </div>
+</body>
+</html>
