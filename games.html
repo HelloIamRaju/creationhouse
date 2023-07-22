@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tic Tac Toe</title>
+  <style>
+    /* Reset default margin and padding */
+  * {
+      margin: 0;
+      padding: 0;
+  }
+  
+  /* Style the header */
+  .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      color: black;
+      z-index: 999; /* Set a high z-index to ensure it appears on top */
+  }
+  
+  .logo img {
+      height: 50px;
+  }
+  
+  /* Style the navigation menu */
+  .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding:0;
+      display: flex;
+  }
+  
+  .navbar li {
+      margin-left: 10px;
+      padding-right: 40px;
+  }
+  
+  .navbar li a {
+      font-family:courier;
+      color: black;
+      text-decoration: none;
+      position: relative;
+      font-weight:bold
+  }
+  
+  .navbar li a:hover {
+      text-decoration: none;
+  }
+  
+  .navbar li a::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color:#07de6f;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      transform-origin: center;
+      transition: transform 0.3s ease-in-out;
+  }
+  
+  .navbar li a:hover::after {
+      transform: translateX(-50%) scaleX(1);
+  }
+  
+  
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: dodgerblue;
+      color: white;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 100px;
+    }
+
+    .board {
+      margin-top:30px;
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-gap:10px;
+    }
+
+    .cell {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #ccc;
+      font-size: 48px;
+      cursor: pointer;
+   
+    }
+
+    .cell:hover {
+      transform: scale(1.05);
+    }
+
+    .reset-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color:black;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition:0.3s
+    }
+
+    .reset-button:hover{
+
+      background-color:white;
+      color:black;
+      box-shadow:10px white;
+    }
+
+    .result-text {
+      font-size: 24px;
+      margin-top: 20px;
+   
+    }
+    h1{
+      cursor:pointer
+    }
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="games.html">Games</a></li>
+        </ul>
+    </nav>
+</header>
+
+  <div class="container">
+    <h1><u>Tic Tac Toe</u></h1>
+    <div class="board" id="board">
+      <div class="cell" onclick="makeMove(0)"></div>
+      <div class="cell" onclick="makeMove(1)"></div>
+      <div class="cell" onclick="makeMove(2)"></div>
+      <div class="cell" onclick="makeMove(3)"></div>
+      <div class="cell" onclick="makeMove(4)"></div>
+      <div class="cell" onclick="makeMove(5)"></div>
+      <div class="cell" onclick="makeMove(6)"></div>
+      <div class="cell" onclick="makeMove(7)"></div>
+      <div class="cell" onclick="makeMove(8)"></div>
+    </div>
+    <button class="reset-button" onclick="resetGame()">Play Again</button>
+    <div class="result-text" id="result-text"></div>
+  </div>
+  <script>
+    let board = ['', '', '', '', '', '', '', '', ''];
+    let currentPlayer = 'X';
+    let resultText = document.getElementById('result-text');
+    let wins = 0;
+    let losses = 0;
+
+    function makeMove(index) {
+      if (board[index] === '') {
+        board[index] = currentPlayer;
+        document.getElementsByClassName('cell')[index].innerText = currentPlayer;
+
+        if (checkWin(currentPlayer)) {
+          resultText.innerText = `${currentPlayer} wins!`;
+          resultText.style.color = currentPlayer === 'X' ? 'lime' : 'gold';
+          updateScore(currentPlayer === 'X' ? 'wins' : 'losses');
+          disableBoard();
+        } else if (checkDraw()) {
+          resultText.innerText = "It's a draw!";
+          resultText.style.color = 'yellow';
+          disableBoard();
+        } else {
+          currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+          if (currentPlayer === 'O') {
+            setTimeout(makeComputerMove, 500);
+          }
+        }
+      }
+    }
+
+    function makeComputerMove() {
+      let emptyCells = board.reduce((acc, val, index) => {
+        if (val === '') acc.push(index);
+        return acc;
+      }, []);
+
+      let randomIndex = Math.floor(Math.random() * emptyCells.length);
+      let computerMove = emptyCells[randomIndex];
+      makeMove(computerMove);
+    }
+
+    function checkWin(player) {
+      const winPatterns = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+      ];
+
+      return winPatterns.some(pattern =>
+        pattern.every(index => board[index] === player)
+      );
+    }
+
+    function checkDraw() {
+      return board.every(cell => cell !== '');
+    }
+
+    function disableBoard() {
+      const cells = document.getElementsByClassName('cell');
+      for (let i = 0; i < cells.length; i++) {
+        cells[i].removeAttribute('onclick');
+      }
+    }
+
+    function resetBoard() {
+      board = ['', '', '', '', '', '', '', '', ''];
+      currentPlayer = 'X';
+      const cells = document.getElementsByClassName('cell');
+      for (let i = 0; i < cells.length; i++) {
+        cells[i].innerText = '';
+        cells[i].setAttribute('onclick', `makeMove(${i})`);
+      }
+      resultText.innerText = '';
+    }
+
+    function updateScore(outcome) {
+      if (outcome === 'wins') {
+        wins++;
+      } else if (outcome === 'losses') {
+        losses++;
+      }
+      document.getElementById('score-text').innerText = `Wins: ${wins} - Losses: ${losses}`;
+    }
+
+    function resetGame() {
+      resetBoard();
+      document.getElementById('score-text').innerText = 'Wins: 0 - Losses: 0';
+    }
+
+    resetBoard();
+
+    /* ... (previous functions remain the same) ... */
+
+    function makeComputerMove() {
+      let bestScore = -Infinity;
+      let move;
+
+      for (let i = 0; i < 9; i++) {
+        if (board[i] === '') {
+          board[i] = 'O';
+          let score = minimax(board, 0, false);
+          board[i] = '';
+          if (score > bestScore) {
+            bestScore = score;
+            move = i;
+          }
+        }
+      }
+
+      makeMove(move);
+    }
+
+    function minimax(board, depth, isMaximizing) {
+      if (checkWin('O')) return 1;
+      if (checkWin('X')) return -1;
+      if (checkDraw()) return 0;
+
+      if (isMaximizing) {
+        let bestScore = -Infinity;
+        for (let i = 0; i < 9; i++) {
+          if (board[i] === '') {
+            board[i] = 'O';
+            let score = minimax(board, depth + 1, false);
+            board[i] = '';
+            bestScore = Math.max(bestScore, score);
+          }
+        }
+        return bestScore;
+      } else {
+        let bestScore = Infinity;
+        for (let i = 0; i < 9; i++) {
+          if (board[i] === '') {
+            board[i] = 'X';
+            let score = minimax(board, depth + 1, true);
+            board[i] = '';
+            bestScore = Math.min(bestScore, score);
+          }
+        }
+        return bestScore;
+      }
+    }
+
+
+  </script>
+</body>
+</html>
