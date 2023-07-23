@@ -255,3 +255,5 @@
           .hero a:hover::before {
               transform: scaleX(1);
           }
+        .const h2{color:black;border:2px solid white;transition:0.3s}
+        .const h2:hover{border:2px solid black;transform:scale(1.1)}
