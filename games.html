@@ -43,33 +43,12 @@ color:white;}
 }
 
 .options label:hover {
-  background-color:rgba(0,0,0,0.1); /* Green color for hover */
+  background-color:rgba(0,0,0,0.1);
   border-color: black;
 }
 
 .options input[type="radio"] {
   display:none;
-}
-
-.options label::before {
-  content: "";
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  margin-right: 10px;
-  border: 2px solid #ccc;
-  border-radius: 50%;
-  vertical-align: middle;
-}
-
-.options input[type="radio"]:checked + label::before {
-  background-color: #32CD32; /* Green color for correct answer */
-  border-color: #32CD32;
-}
-
-.options input[type="radio"]:not(:checked) + label::before {
-  background-color: #FF6347; /* Red color for incorrect answers */
-  border-color: #FF6347;
 }
 
 .score {
@@ -100,944 +79,944 @@ color:white;}
     const questions = [
       
 {
-      "question": "Which Nepali poet is known as Mahakavi?",
-      "answer": "Laxmi Prasad Devkota",
-      "options": [
-        "Laxmi Prasad Devkota",
-        "Bhanu Bhakta Acharya",
-        "Motiram Bhatta",
-        "Balkrishna Sama"
-      ]
-    },
-    {
-      "question": "What is the folk tune used in Muna Madan called?",
-      "answer": "Jhyaure Bhaka",
-      "options": [
-        "Jhyaure Bhaka",
-        "Sorathi",
-        "Gurung Selo",
-        "Dohori"
-      ]
-    },
-    {
-      "question": "Which Nepali poet is known as Kavi Shiromani?",
-      "answer": "Leknath Paudyal",
-      "options": [
-        "Leknath Paudyal",
-        "Bhanu Bhakta Acharya",
-        "Laxmi Prasad Devkota",
-        "Motiram Bhatta"
-      ]
-    },
-    {
-      "question": "Who is known as the Shakespeare of Nepal?",
-      "answer": "Balkrishna Sama",
-      "options": [
-        "Balkrishna Sama",
-        "Laxmi Prasad Devkota",
-        "Bhanu Bhakta Acharya",
-        "Motiram Bhatta"
-      ]
-    },
-    {
-      "question": "Which Nepali poet is known by the title of Adikavi?",
-      "answer": "Bhanu Bhakta Acharya",
-      "options": [
-        "Bhanu Bhakta Acharya",
-        "Leknath Paudyal",
-        "Laxmi Prasad Devkota",
-        "Motiram Bhatta"
-      ]
-    },
-    {
-      "question": "Who is known as the youth poet in Nepal?",
-      "answer": "Motiram Bhatta",
-      "options": [
-        "Motiram Bhatta",
-        "Laxmi Prasad Devkota",
-        "Bhanu Bhakta Acharya",
-        "Leknath Paudyal"
-      ]
-    },
-    {
-      "question": "Which is the biggest province in Nepal?",
-      "answer": "Karnali",
-      "options": [
-        "Karnali",
-        "Gandaki",
-        "Province No. 3",
-        "Province No. 2"
-      ]
-    },
-    {
-      "question": "Which is the biggest National Park of Nepal?",
-      "answer": "Shey Phoksundo",
-     "options": [
-        "Shey Phoksundo",
-        "Sagarmatha (Everest)",
-        "Bardiya",
-        "Chitwan"
-      ]
-    },
-    {
-      "question": "What is the length of the Koshi River?",
-      "answer": "720km",
-      "options": [
-        "720km",
-        "520km",
-        "820km",
-        "620km"
-      ]
-    },
-    {
+    "question": "Which Nepali poet is known as Mahakavi?",
+    "answer": "Laxmi Prasad Devkota",
+    "options": [
+      "Motiram Bhatta",
+      "Bhanu Bhakta Acharya",
+      "Laxmi Prasad Devkota",
+      "Balkrishna Sama"
+    ]
+  },
+  {
+    "question": "What is the folk tune used in Muna Madan called?",
+    "answer": "Jhyaure Bhaka",
+    "options": [
+      "Sorathi",
+      "Jhyaure Bhaka",
+      "Gurung Selo",
+      "Dohori"
+    ]
+  },
+  {
+    "question": "Which Nepali poet is known as Kavi Shiromani?",
+    "answer": "Leknath Paudyal",
+    "options": [
+      "Bhanu Bhakta Acharya",
+      "Motiram Bhatta",
+      "Leknath Paudyal",
+      "Laxmi Prasad Devkota"
+    ]
+  },
+  {
+    "question": "Who is known as the Shakespeare of Nepal?",
+    "answer": "Balkrishna Sama",
+    "options": [
+      "Laxmi Prasad Devkota",
+      "Bhanu Bhakta Acharya",
+      "Motiram Bhatta",
+      "Balkrishna Sama"
+    ]
+  },
+  {
+    "question": "Which Nepali poet is known by the title of Adikavi?",
+    "answer": "Bhanu Bhakta Acharya",
+    "options": [
+      "Motiram Bhatta",
+      "Laxmi Prasad Devkota",
+      "Bhanu Bhakta Acharya",
+      "Leknath Paudyal"
+    ]
+  },
+  {
+    "question": "Who is known as the youth poet in Nepal?",
+    "answer": "Motiram Bhatta",
+    "options": [
+      "Laxmi Prasad Devkota",
+      "Bhanu Bhakta Acharya",
+      "Motiram Bhatta",
+      "Leknath Paudyal"
+    ]
+  },
+  {
+    "question": "Which is the biggest province in Nepal?",
+    "answer": "Karnali",
+    "options": [
+      "Province No. 2",
+      "Gandaki",
+      "Province No. 3",
+      "Karnali"
+    ]
+  },
+  {
+    "question": "Which is the biggest National Park of Nepal?",
+    "answer": "Shey Phoksundo",
+    "options": [
+      "Chitwan",
+      "Sagarmatha (Everest)",
+      "Bardiya",
+      "Shey Phoksundo"
+    ]
+  },
+  {
+    "question": "What is the length of the Koshi River?",
+    "answer": "720km",
+    "options": [
+      "820km",
+      "620km",
+      "720km",
+      "520km"
+    ]
+  },
+  {
       "question": "Which is the tallest temple in Nepal?",
       "answer": "Nyapatole",
       "options": [
-        "Nyapatole",
-        "Pashupatinath",
-        "Swayambhunath",
-        "Boudhanath"
-      ]
+          "Pashupatinath",
+          "Nyapatole",
+          "Boudhanath",
+          "Swayambhunath"
+        ]
     },
     {
       "question": "What is the capital city of Egypt?",
       "answer": "Cairo",
       "options": [
-        "Cairo",
-        "Alexandria",
-        "Luxor",
-        "Giza"
-      ]
+          "Giza",
+          "Alexandria",
+          "Cairo",
+          "Luxor"
+        ]
     },
     {
       "question": "What is the currency of Belgium called?",
       "answer": "Euro",
       "options": [
-        "Euro",
-        "Pound",
-        "Franc",
-        "Dollar"
-      ]
+          "Pound",
+          "Euro",
+          "Dollar",
+          "Franc"
+        ]
     },
     {
       "question": "What is the full form of SAFTA?",
       "answer": "South Asian Free Trade Area",
       "options": [
-        "South Asian Foreign Trade Agreement",
-        "South Asian Financial and Trade Alliance",
-        "South Asian Free Trade Agreement",
-        "South Asian Federation of Trade Associations"
-      ]
+          "South Asian Financial and Trade Alliance",
+          "South Asian Federation of Trade Associations",
+          "South Asian Free Trade Agreement",
+          "South Asian Foreign Trade Agreement"
+        ]
     },
     {
       "question": "What is the full form of IBM?",
       "answer": "International Business Machines",
       "options": [
-        "International Business Machines",
-        "Internet Business Management",
-        "International Banking Machinery",
-        "Institute of Business Management"
-      ]
+          "Internet Business Management",
+          "International Business Machines",
+          "Institute of Business Management",
+          "International Banking Machinery"
+        ]
     },
     {
       "question": "Who is the First President of the United States of America?",
       "answer": "George Washington",
       "options": [
-        "George Washington",
-        "Abraham Lincoln",
-        "Thomas Jefferson",
-        "John Adams"
-      ]
+          "Thomas Jefferson",
+          "John Adams",
+          "George Washington",
+          "Abraham Lincoln"
+        ]
     },
     {
       "question": "Who is the First man to set foot on the moon?",
       "answer": "Neil Armstrong",
       "options": [
-        "Neil Armstrong",
-        "Buzz Aldrin",
-        "Michael Collins",
-        "Alan Shepard"
-      ]
+          "Buzz Aldrin",
+          "Michael Collins",
+          "Neil Armstrong",
+          "Alan Shepard"
+        ]
     },
-    {
+   {
       "question": "How many planets are there in the solar system?",
       "answer": "8",
       "options": [
-        "8",
-        "9",
-        "7",
-        "10"
-      ]
+          "9",
+          "8",
+          "10",
+          "7"
+        ]
     },
     {
       "question": "Name the national bird of Germany.",
       "answer": "Eagle",
       "options": [
-        "Eagle",
-        "Sparrow",
-        "Swan",
-        "Falcon"
-      ]
+          "Swan",
+          "Eagle",
+          "Falcon",
+          "Sparrow"
+        ]
     },
     {
       "question": "Who was the writer of the Mahabharata?",
       "answer": "Ved Vyas",
       "options": [
-        "Ved Vyas",
-        "Valmiki",
-        "Tulsidas",
-        "Kalidasa"
-      ]
+          "Tulsidas",
+          "Kalidasa",
+          "Valmiki",
+          "Ved Vyas"
+        ]
     },
     {
       "question": "How many vertebrae are there in the human body?",
       "answer": "33",
       "options": [
-        "33",
-        "24",
-        "42",
-        "50"
-      ]
+          "24",
+          "50",
+          "33",
+          "42"
+        ]
     },
     {
       "question": "Which part of the human body produces voice?",
       "answer": "Vocal cord",
       "options": [
-        "Vocal cord",
-        "Larynx",
-        "Trachea",
-        "Pharynx"
-      ]
+          "Trachea",
+          "Vocal cord",
+          "Larynx",
+          "Pharynx"
+        ]
     },
     {
       "question": "Which is the smallest bone of the human body?",
       "answer": "Stapes",
       "options": [
-        "Stapes",
-        "Coccyx",
-        "Femur",
-        "Ulna"
-      ]
+          "Coccyx",
+          "Ulna",
+          "Stapes",
+          "Femur"
+        ]
     },
     {
-      "question": "What is the height of the heart in an average human being?",
+      "question": "What is the weight of the heart in an average human being?",
       "answer": "300gm",
       "options": [
-        "300gm",
-        "200gm",
-        "400gm",
-        "500gm"
-      ]
+          "500gm",
+          "300gm",
+          "400gm",
+          "200gm"
+        ]
     },
     {
       "question": "What is the largest organ in the human body?",
       "answer": "Skin",
       "options": [
-        "Skin",
-        "Liver",
-        "Brain",
-        "Lungs"
-      ]
+          "Liver",
+          "Skin",
+          "Lungs",
+          "Brain"
+        ]
     },
     {
       "question": "How many members are there in SAARC?",
       "answer": "8",
       "options": [
-        "8",
-        "7",
-        "9",
-        "10"
-      ]
+          "9",
+          "10",
+          "8",
+          "7"
+        ]
     },
     {
       "question": "From the number 0 to the number 1000, the letter 'A' appears only in?",
       "answer": "1000",
       "options": [
-        "1000",
-        "500",
-        "100",
-        "900"
-      ]
+          "100",
+          "900",
+          "500",
+          "1000"
+        ]
     },
-    {
+  {
       "question": "How many vertices are present on a cube?",
       "answer": "8",
       "options": [
-        "8",
-        "6",
-        "10",
-        "12"
-      ]
+          "6",
+          "12",
+          "8",
+          "10"
+        ]
     },
     {
       "question": "What is the next prime number after 5?",
       "answer": "7",
       "options": [
-        "7",
-        "6",
-        "8",
-        "9"
-      ]
+          "6",
+          "9",
+          "7",
+          "8"
+        ]
     },
     {
       "question": "The product of 131 x 0 x 300 x 4 is?",
       "answer": "0",
       "options": [
-        "0",
-        "131",
-        "300",
-        "4"
-      ]
+          "131",
+          "4",
+          "0",
+          "300"
+        ]
     },
     {
       "question": "What 3 numbers result in the same answer when they are added or multiplied altogether?",
       "answer": "1, 2, and 3",
       "options": [
-        "1, 2, and 3",
-        "4, 5, and 6",
-        "7, 8, and 9",
-        "10, 11, and 12"
-      ]
+          "4, 5, and 6",
+          "7, 8, and 9",
+          "1, 2, and 3",
+          "10, 11, and 12"
+        ]
     },
     {
       "question": "When was the division of 14 zones and 75 districts?",
       "answer": "2018 Baishakh 01",
       "options": [
-        "2018 Baishakh 01",
-        "2020 Ashar 01",
-        "2016 Magh 01",
-        "2019 Jestha 01"
-      ]
+          "2020 Ashar 01",
+          "2019 Jestha 01",
+          "2016 Magh 01",
+          "2018 Baishakh 01"
+        ]
     },
     {
       "question": "How many MW of electricity has been produced in Nepal so far?",
       "answer": "1142 MW",
       "options": [
-        "1142 MW",
-        "1000 MW",
-        "1250 MW",
-        "900 MW"
-      ]
+          "1250 MW",
+          "1142 MW",
+          "1000 MW",
+          "900 MW"
+        ]
     },
     {
       "question": "When is earthquake day celebrated in Nepal?",
       "answer": "Magh 2",
       "options": [
-        "Magh 2",
-        "Baishakh 12",
-        "Shrawan 16",
-        "Ashoj 10"
-      ]
+          "Baishakh 12",
+          "Shrawan 16",
+          "Ashoj 10",
+          "Magh 2"
+        ]
     },
     {
       "question": "In which district does the Chinamasta's temple belong?",
       "answer": "Saptari",
       "options": [
-        "Saptari",
-        "Kathmandu",
-        "Lalitpur",
-        "Bhaktapur"
-      ]
+          "Lalitpur",
+          "Saptari",
+          "Kathmandu",
+          "Bhaktapur"
+        ]
     },
     {
       "question": "Which national figure of Nepal is known as 'Himalki Chhori'?",
       "answer": "Pasang Lhamu Sherpa",
       "options": [
-        "Pasang Lhamu Sherpa",
-        "Anuradha Koirala",
-        "Sarala Thapa",
-        "Usha Nepal"
-      ]
+          "Usha Nepal",
+          "Sarala Thapa",
+          "Pasang Lhamu Sherpa",
+          "Anuradha Koirala"
+        ]
     },
     {
       "question": "Which district lies in Zakhira Lake?",
       "answer": "Kapilvastu",
       "options": [
-        "Kapilvastu",
-        "Sunsari",
-        "Morang",
-        "Rupandehi"
-      ]
-    },
-    {
-      "question": "By what name is the Bhandarkal festival known?",
-      "answer": "Basnet Parwa",
-      "options": [
-        "Basnet Parwa",
-        "Dashain",
-        "Tihar",
-        "Holi"
-      ]
-    },
-    {
-      "question": "How many trade points have been opened between Nepal and India?",
-      "answer": "27",
-      "options": [
-        "27",
-        "20",
-        "30",
-        "35"
-      ]
-    },
-    {
-      "question": "Which is the smallest district of Nepal after the local level division?",
-      "answer": "Bhaktapur",
-      "options": [
-        "Bhaktapur",
-        "Lalitpur",
-        "Kathmandu",
-        "Sindhupalchowk"
-      ]
+          "Morang",
+          "Sunsari",
+          "Kapilvastu",
+          "Rupandehi"
+        ]
     },
      {
-      "question": "Where is the 'Ghorne' waterfall?",
-      "answer": "Sankhuwasabha",
-      "options": [
-        "Sankhuwasabha",
-        "Taplejung",
-        "Dhankuta",
-        "Panchthar"
-      ]
-    },
-    {
-      "question": "Who was the first to use the word 'Jai Nepal'?",
-      "answer": "Shukraraj Shastri",
-      "options": [
-        "Shukraraj Shastri",
-        "Girija Prasad Koirala",
-        "Bishweshwar Prasad Koirala",
-        "Subarna Shamsher Rana"
-      ]
-    },
-    {
-      "question": "How many national pride projects are there in Nepal right now?",
-      "answer": "23",
-      "options": [
-        "23",
-        "20",
-        "25",
-        "30"
-      ]
-    },
-    {
-      "question": "What percentage of the total land area of Nepal is cultivated land?",
-      "answer": "17.97%",
-      "options": [
-        "17.97%",
-        "12.5%",
-        "21.3%",
-        "14.75%"
-      ]
-    },
-    {
-      "question": "Which is Nepal's first highway?",
-      "answer": "Tribhuvan Highway",
-      "options": [
-        "Tribhuvan Highway",
-        "Prithvi Highway",
-        "Mahendra Highway",
-        "Arniko Highway"
-      ]
-    },
-    {
-      "question": "What is the name of the road from Kathmandu to Pokhara?",
-      "answer": "Prithvi Highway",
-      "options": [
-        "Prithvi Highway",
-        "Mahendra Highway",
-        "Tribhuvan Highway",
-        "Arniko Highway"
-      ]
-    },
-    {
-      "question": "What is called the blank sheet on the front and back of the book?",
-      "answer": "Fly Leaf",
-      "options": [
-        "Fly Leaf",
-        "Cover Leaf",
-        "Endpaper",
-        "Title Page"
-      ]
-    },
-    {
-      "question": "Who is the 'Zero' Inventor?",
-      "answer": "Aryabhata",
-      "options": [
-        "Aryabhata",
-        "Brahmagupta",
-        "Bhaskara I",
-        "Varahamihira"
-      ]
-    },
-    {
-      "question": "From which district did tea cultivation originate in Nepal?",
-      "answer": "Ilam",
-      "options": [
-        "Ilam",
-        "Dhankuta",
-        "Panchthar",
-        "Jhapa"
-      ]
-    },
-    {
-      "question": "बिबिसी नेपाली सेवाका सम्पादक को हुन् ?",
-      "answer": "रबिन्द्र मिश्र",
-      "options": [
-        "रबिन्द्र मिश्र",
-        "युवराज घिमिरे",
-        "भावना श्रेष्ठ",
-        "मोहन बुढ्दा"
-      ]
-    },
-    {
-      "question": "चेस खेलको सुरु कुन देशबाट भएको हो ?",
-      "answer": "भारत",
-      "options": [
-        "भारत",
-        "नेपाल",
-        "बांग्लादेश",
-        "पाकिस्तान"
-      ]
-    },
-    {
-      "question": "चादिको मोहर चलनचल्तिमा ल्याउने मल्ल राजा को हुन?",
-      "answer": "महेन्द्र मल्ल",
-      "options": [
-        "महेन्द्र मल्ल",
-        "प्रताप मल्ल",
-        "जयपुर मल्ल",
-        "राणा बहादुर"
-      ]
-    },
-    {
-      "question": "नेपाल को सबै भन्दा ठुलो ताल कुन हो र कुन जील्ला मा पर्छ ?",
-      "answer": "रारा ताल मुगु जील्लामा पर्छ",
-      "options": [
-        "रारा ताल मुगु जील्लामा पर्छ",
-        "फेवा ताल कैलाली जील्लामा पर्छ",
-        "बेग्लासो ताल मोरङ जील्लामा पर्छ",
-        "जनकपुर दहा जील्लामा पर्छ"
-      ]
-    },
-    {
-      "question": "बिश्वको कुल क्षेत्रफलको कति प्रतिशत भूभाग नेपालले ओगटेको छ ?",
-      "answer": "०.०३ प्रतिशत",
-      "options": [
-        "०.०३ प्रतिशत",
-        "१.५ प्रतिशत",
-        "०.१ प्रतिशत",
-        "०.५ प्रतिशत"
-      ]
-    },
+    "question": "By what name is the Bhandarkal festival known?",
+    "answer": "Basnet Parwa",
+    "options": [
+      "Tihar",
+      "Holi",
+      "Basnet Parwa",
+      "Dashain"
+    ]
+  },
+  {
+    "question": "How many trade points have been opened between Nepal and India?",
+    "answer": "27",
+    "options": [
+      "30",
+      "35",
+      "27",
+      "20"
+    ]
+  },
+  {
+    "question": "Which is the smallest district of Nepal after the local level division?",
+    "answer": "Bhaktapur",
+    "options": [
+      "Lalitpur",
+      "Kathmandu",
+      "Bhaktapur",
+      "Sindhupalchowk"
+    ]
+  },
+  {
+    "question": "Where is the 'Ghorne' waterfall?",
+    "answer": "Sankhuwasabha",
+    "options": [
+      "Panchthar",
+      "Sankhuwasabha",
+      "Dhankuta",
+      "Taplejung"
+    ]
+  },
+  {
+    "question": "Who was the first to use the word 'Jai Nepal'?",
+    "answer": "Shukraraj Shastri",
+    "options": [
+      "Bishweshwar Prasad Koirala",
+      "Shukraraj Shastri",
+      "Subarna Shamsher Rana",
+      "Girija Prasad Koirala"
+    ]
+  },
+  {
+    "question": "How many national pride projects are there in Nepal right now?",
+    "answer": "23",
+    "options": [
+      "20",
+      "25",
+      "23",
+      "30"
+    ]
+  },
+  {
+    "question": "What percentage of the total land area of Nepal is cultivated land?",
+    "answer": "17.97%",
+    "options": [
+      "12.5%",
+      "21.3%",
+      "17.97%",
+      "14.75%"
+    ]
+  },
+  {
+    "question": "Which is Nepal's first highway?",
+    "answer": "Tribhuvan Highway",
+    "options": [
+      "Mahendra Highway",
+      "Prithvi Highway",
+      "Tribhuvan Highway",
+      "Arniko Highway"
+    ]
+  },
+  {
+    "question": "What is the name of the road from Kathmandu to Pokhara?",
+    "answer": "Prithvi Highway",
+    "options": [
+      "Mahendra Highway",
+      "Tribhuvan Highway",
+      "Arniko Highway",
+      "Prithvi Highway"
+    ]
+  },
+  {
+    "question": "What is called the blank sheet on the front and back of the book?",
+    "answer": "Fly Leaf",
+    "options": [
+      "Endpaper",
+      "Title Page",
+      "Fly Leaf",
+      "Cover Leaf"
+    ]
+  },
+  {
+    "question": "Who is the 'Zero' Inventor?",
+    "answer": "Aryabhata",
+    "options": [
+      "Brahmagupta",
+      "Bhaskara I",
+      "Aryabhata",
+      "Varahamihira"
+    ]
+  },
+  {
+    "question": "From which district did tea cultivation originate in Nepal?",
+    "answer": "Ilam",
+    "options": [
+      "Dhankuta",
+      "Jhapa",
+      "Ilam",
+      "Panchthar"
+    ]
+  },
+  {
+    "question": "बिबिसी नेपाली सेवाका सम्पादक को हुन् ?",
+    "answer": "रबिन्द्र मिश्र",
+    "options": [
+      "मोहन बुढ्दा",
+      "युवराज घिमिरे",
+      "रबिन्द्र मिश्र",
+      "भावना श्रेष्ठ"
+    ]
+  },
+  {
+    "question": "चेस खेलको सुरु कुन देशबाट भएको हो ?",
+    "answer": "भारत",
+    "options": [
+      "नेपाल",
+      "पाकिस्तान",
+      "बांग्लादेश",
+      "भारत"
+    ]
+  },
+  {
+    "question": "चादिको मोहर चलनचल्तिमा ल्याउने मल्ल राजा को हुन?",
+    "answer": "महेन्द्र मल्ल",
+    "options": [
+      "प्रताप मल्ल",
+      "राणा बहादुर",
+      "महेन्द्र मल्ल",
+      "जयपुर मल्ल"
+    ]
+  },
+  {
+    "question": "नेपाल को सबै भन्दा ठुलो ताल कुन हो र कुन जील्ला मा पर्छ ?",
+    "answer": "रारा ताल मुगु जील्लामा पर्छ",
+    "options": [
+      "फेवा ताल कैलाली जील्लामा पर्छ",
+      "जनकपुर दहा जील्लामा पर्छ",
+      "रारा ताल मुगु जील्लामा पर्छ",
+      "बेग्लासो ताल मोरङ जील्लामा पर्छ"
+    ]
+  },
+  {
+    "question": "बिश्वको कुल क्षेत्रफलको कति प्रतिशत भूभाग नेपालले ओगटेको छ ?",
+    "answer": "०.०३ प्रतिशत",
+    "options": [
+      "१.५ प्रतिशत",
+      "०.१ प्रतिशत",
+      "०.०३ प्रतिशत",
+      "०.५ प्रतिशत"
+    ]
+  },
     {
       "question": "एसियाको कुल क्षेत्रफलको कति प्रतिशत भूभाग नेपालले ओगटेको छ ?",
       "answer": "०.३ प्रतिशत",
       "options": [
-        "०.३ प्रतिशत",
-        "१.५ प्रतिशत",
-        "०.१ प्रतिशत",
-        "०.५ प्रतिशत"
-      ]
+          "०.१ प्रतिशत",
+          "१.५ प्रतिशत",
+          "०.५ प्रतिशत",
+          "०.३ प्रतिशत"
+        ]
     },
     {
       "question": "नेपालको सबैभन्दा होचो भूभाग कुन जील्ला मा पर्छ?",
       "answer": "धनुषा जील्ला",
       "options": [
-        "धनुषा जील्ला",
-        "महोत्तरी जील्ला",
-        "सर्लाही जील्ला",
-        "सिराहा जील्ला"
-      ]
+          "सर्लाही जील्ला",
+          "महोत्तरी जील्ला",
+          "सिराहा जील्ला",
+          "धनुषा जील्ला"
+        ]
     },
     {
       "question": "“द लाईट अफ एसिया” भनी कसलाई चिनिन्छ ?",
       "answer": "गौतम बुद्द",
       "options": [
-        "गौतम बुद्द",
-        "अशोक विक्रमादित्य",
-        "चंद्रगुप्त मौर्य",
-        "आशोक शह"
-      ]
+          "अशोक विक्रमादित्य",
+          "चंद्रगुप्त मौर्य",
+          "आशोक शह",
+          "गौतम बुद्द"
+        ]
     },
     {
       "question": "सबभन्दा पुरानो धातु कुनलाई मानिन्छ ?",
       "answer": "तामा",
       "options": [
-        "तामा",
-        "चाँदी",
-        "सोना",
-        "आयरन"
-      ]
+          "सोना",
+          "तामा",
+          "आयरन",
+          "चाँदी"
+        ]
     },
     {
       "question": "प्रहरी र जेल नभएको देश कुन हो ?",
       "answer": "आइस्ल्यान्ड",
       "options": [
-        "आइस्ल्यान्ड",
-        "नोर्वे",
-        "स्वीडन",
-        "फिनल्याण्ड"
-      ]
+          "नोर्वे",
+          "फिनल्याण्ड",
+          "स्वीडन",
+          "आइस्ल्यान्ड"
+        ]
     },
     {
       "question": "सबैभन्दा पुरानो धातु तामा हो भने सबैभन्दि बढि प्रयोग हुने धातु कुन हो ?",
       "answer": "फलाम",
       "options": [
-        "फलाम",
-        "तामा",
-        "चाँदी",
-        "सोना"
-      ]
+          "चाँदी",
+          "तामा",
+          "सोना",
+          "फलाम"
+        ]
     },
     {
       "question": "बुद्धलाई विष्णुको कति औं अवतार मानिन्छ ?",
       "answer": "नवौं",
       "options": [
-        "नवौं",
-        "दशम",
-        "अष्टम",
-        "श्रीवत्स"
-      ]
+          "श्रीवत्स",
+          "अष्टम",
+          "नवौं",
+          "दशम"
+        ]
     },
     {
       "question": "पानी मुनिको देश भनेर कुन देशलाई चिनिन्छ ?",
       "answer": "नेदरल्याण्ड",
       "options": [
-        "नेदरल्याण्ड",
-        "जर्मनी",
-        "स्विजरल्याण्ड",
-        "फ्रान्स"
-      ]
+          "जर्मनी",
+          "फ्रान्स",
+          "स्विजरल्याण्ड",
+          "नेदरल्याण्ड"
+        ]
     },
-    {
-      "question": "नेपालको निशाना छापमा कति वटा लालिगुरास छन ?",
-      "answer": "१४",
-      "options": [
-        "१४",
-        "१०",
-        "१२",
-        "१६"
-      ]
-    },
-    {
-      "question": "नेपालको कान्छो जिल्ला (district) कुन हो ?",
-      "answer": "पश्चिम रुकुम",
-      "options": [
-        "पश्चिम रुकुम",
-        "डोल्पा",
-        "मुगु",
-        "मनाङ"
-      ]
-    },
-    {
-      "question": "Who said this slogan : “अरुलाई उपदेश दिनेबेला सबै सज्जन हुन्छन् ?",
-      "answer": "तुलसिदास",
-      "options": [
-        "तुलसिदास",
-        "भानुभक्त",
-        "लक्ष्मीप्रसाद",
-        "भूपी"
-      ]
-    },
-    {
-      "question": "नेपालको कुन हिमाललाई किलर माउन्टेनका नामले समेत चिनिन्छ ?",
-      "answer": "मनास्लु हिमाल",
-      "options": [
-        "मनास्लु हिमाल",
-        "एभरेस्ट",
-        "कञ्चन्जंघा",
-        "ल्होट्से"
-      ]
-    },
-    {
-      "question": "भगवान शिवको नृत्य गर्दा को नाम के हो ?",
-      "answer": "नटराज",
-      "options": [
-        "नटराज",
-        "भोलेनाथ",
-        "महादेव",
-        "शंकर"
-      ]
-    },
-    {
-      "question": "रानी पोखरी प्रताप मल्लले बनाएका हुन भने पशुपति मन्दिर कसले बनाएका हुन ?",
-      "answer": "प्रचण्डदेव",
-      "options": [
-        "प्रचण्डदेव",
-        "प्रतापमल्ल",
-        "यक्ष्यमाल्ल",
-        "जयप्रकाशमल्ल"
-      ]
-    },
-    {
-      "question": "नेपालको सबैभन्दा ठुलो दरबार कुन हो ?",
-      "answer": "सिँहदरबार",
-      "options": [
-        "सिँहदरबार",
-        "बसन्तपुर दरबार",
-        "रत्नदरबार",
-        "घण्टाघर दरबार"
-      ]
-    },
-    {
-      "question": "घोडाघोडी ताल कुन जिल्लामा पर्दछ ?",
-      "answer": "कैलाली जिल्ला",
-      "options": [
-        "कैलाली जिल्ला",
-        "बाजुरा जिल्ला",
-        "बैतडी जिल्ला",
-        "दाङ्ग जिल्ला"
-      ]
-    },
-    {
-      "question": "What is the world's largest mammal?",
-      "answer": "Antarctic blue whale",
-      "options": [
-        "Antarctic blue whale",
-        "African elephant",
-        "Giraffe",
-        "Hippopotamus"
-      ]
-    },
-    {
-      "question": "What is the fastest land animal?",
-      "answer": "Cheetah",
-      "options": [
-        "Cheetah",
-        "Lion",
-        "Leopard",
-        "Gazelle"
-      ]
-    },
+     {
+       "question": "नेपालको निशाना छापमा कति वटा लालिगुरास छन ?",
+       "answer": "१४",
+       "options": [
+          "१०",
+          "१६",
+          "१२",
+          "१४"
+        ]
+     },
+     {
+       "question": "नेपालको कान्छो जिल्ला (district) कुन हो ?",
+       "answer": "पश्चिम रुकुम",
+       "options": [
+          "मुगु",
+          "मनाङ",
+          "पश्चिम रुकुम",
+          "डोल्पा"
+        ]
+     },
+     {
+       "question": "Who said this slogan : “अरुलाई उपदेश दिनेबेला सबै सज्जन हुन्छन् ?",
+       "answer": "तुलसिदास",
+       "options": [
+          "भानुभक्त",
+          "तुलसिदास",
+          "भूपी",
+          "लक्ष्मीप्रसाद"
+        ]
+     },
+     {
+       "question": "नेपालको कुन हिमाललाई किलर माउन्टेनका नामले समेत चिनिन्छ ?",
+       "answer": "मनास्लु हिमाल",
+       "options": [
+          "कञ्चन्जंघा",
+          "मनास्लु हिमाल",
+          "ल्होट्से",
+          "एभरेस्ट"
+        ]
+     },
+     {
+       "question": "भगवान शिवको नृत्य गर्दा को नाम के हो ?",
+       "answer": "नटराज",
+       "options": [
+          "महादेव",
+          "नटराज",
+          "भोलेनाथ",
+          "शंकर"
+        ]
+     },
+     {
+       "question": "रानी पोखरी प्रताप मल्लले बनाएका हुन भने पशुपति मन्दिर कसले बनाएका हुन ?",
+       "answer": "प्रचण्डदेव",
+       "options": [
+          "प्रतापमल्ल",
+          "जयप्रकाशमल्ल",
+          "प्रचण्डदेव",
+          "यक्ष्यमाल्ल"
+        ]
+     },
+     {
+       "question": "नेपालको सबैभन्दा ठुलो दरबार कुन हो ?",
+       "answer": "सिँहदरबार",
+       "options": [
+          "घण्टाघर दरबार",
+          "रत्नदरबार",
+          "सिँहदरबार",
+          "बसन्तपुर दरबार"
+        ]
+     },
+     {
+       "question": "घोडाघोडी ताल कुन जिल्लामा पर्दछ ?",
+       "answer": "कैलाली जिल्ला",
+       "options": [
+          "बैतडी जिल्ला",
+          "दाङ्ग जिल्ला",
+          "कैलाली जिल्ला",
+          "बाजुरा जिल्ला"
+        ]
+     },
+     {
+       "question": "What is the world's largest mammal?",
+       "answer": "Antarctic blue whale",
+       "options": [
+          "Giraffe",
+          "Hippopotamus",
+          "Antarctic blue whale",
+          "African elephant"
+        ]
+     },
+     {
+       "question": "What is the fastest land animal?",
+       "answer": "Cheetah",
+       "options": [
+          "Leopard",
+          "Lion",
+          "Cheetah",
+          "Gazelle"
+        ]
+     },
     {
       "question": "Which mammal is known for carrying its young in a pouch?",
       "answer": "Kangaroo",
       "options": [
-        "Kangaroo",
-        "Koala",
-        "Opossum",
-        "Platypus"
-      ]
+          "Opossum",
+          "Platypus",
+          "Kangaroo",
+          "Koala"
+        ]
     },
     {
       "question": "Which animal sleeps the longest at a record 20-22 hours a day?",
       "answer": "Koalas",
       "options": [
-        "Koalas",
-        "Sloth",
-        "Panda",
-        "Bat"
-      ]
+          "Panda",
+          "Bat",
+          "Sloth",
+          "Koalas"
+        ]
     },
     {
       "question": "Which animal sleeps the least at two hours a day on average?",
       "answer": "Elephant",
       "options": [
-        "Elephant",
-        "Giraffe",
-        "Horse",
-        "Camel"
-      ]
+          "Camel",
+          "Horse",
+          "Elephant",
+          "Giraffe"
+        ]
     },
     {
       "question": "What is the only known mammal with scales?",
       "answer": "Pangolin",
       "options": [
-        "Pangolin",
-        "Armadillo",
-        "Aardvark",
-        "Anteater"
-      ]
+          "Aardvark",
+          "Anteater",
+          "Pangolin",
+          "Armadillo"
+        ]
     },
     {
       "question": "What is the only bird known to fly backwards?",
       "answer": "Hummingbird",
       "options": [
-        "Hummingbird",
-        "Eagle",
-        "Sparrow",
-        "Pigeon"
-      ]
+          "Sparrow",
+          "Pigeon",
+          "Hummingbird",
+          "Eagle"
+        ]
     },
     {
       "question": "What insect can taste with its feet?",
       "answer": "Butterfly",
       "options": [
-        "Butterfly",
-        "Bee",
-        "Ant",
-        "Dragonfly"
-      ]
+          "Ant",
+          "Bee",
+          "Dragonfly",
+          "Butterfly"
+        ]
     },
     {
       "question": "Which animal has the longest pregnancy of any mammal?",
       "answer": "African elephant",
       "options": [
-        "African elephant",
-        "Blue whale",
-        "Giraffe",
-        "Hippopotamus"
-      ]
+          "Blue whale",
+          "Giraffe",
+          "Hippopotamus",
+          "African elephant"
+        ]
     },
     {
       "question": "Who can see more colours, humans or birds?",
       "answer": "Birds",
       "options": [
-        "Birds",
-        "Humans",
-        "Dogs",
-        "Cats"
-      ]
+          "Dogs",
+          "Humans",
+          "Cats",
+          "Birds"
+        ]
     },
     {
       "question": "How many legs does a spider typically have?",
       "answer": "8",
       "options": [
-        "8",
-        "6",
-        "10",
-        "12"
-      ]
+          "6",
+          "10",
+          "12",
+          "8"
+        ]
     },
     {
       "question": "Which bird is known for its beautiful tail feathers and courtship dance?",
       "answer": "Peacock",
       "options": [
-        "Peacock",
-        "Eagle",
-        "Swan",
-        "Penguin"
-      ]
+          "Swan",
+          "Penguin",
+          "Eagle",
+          "Peacock"
+        ]
     },
     {
       "question": "What is the capital of Spain?",
       "answer": "Madrid",
       "options": [
-        "Madrid",
-        "Barcelona",
-        "Valencia",
-        "Seville"
-      ]
+          "Seville",
+          "Barcelona",
+          "Madrid",
+          "Valencia"
+        ]
     },
     {
       "question": "What is the capital of India?",
       "answer": "New Delhi",
       "options": [
-        "New Delhi",
-        "Mumbai",
-        "Kolkata",
-        "Bangalore"
-      ]
+          "Kolkata",
+          "Mumbai",
+          "Bangalore",
+          "New Delhi"
+        ]
     },
     {
       "question": "What is the capital of Germany?",
       "answer": "Berlin",
       "options": [
-        "Berlin",
-        "Munich",
-        "Hamburg",
-        "Frankfurt"
-      ]
+          "Hamburg",
+          "Munich",
+          "Frankfurt",
+          "Berlin"
+        ]
     },
-     {
+    {
       "question": "Which city is known as the \"capital of Europe\"?",
       "answer": "Brussels",
       "options": [
-        "Brussels",
-        "Paris",
-        "Berlin",
-        "London"
-      ]
+          "Paris",
+          "Berlin",
+          "London",
+          "Brussels"
+        ]
     },
     {
       "question": "What is the capital of Egypt?",
       "answer": "Cairo",
       "options": [
-        "Cairo",
-        "Alexandria",
-        "Luxor",
-        "Giza"
-      ]
+          "Alexandria",
+          "Luxor",
+          "Cairo",
+          "Giza"
+        ]
     },
     {
       "question": "What is the hardest natural substance on Earth?",
       "answer": "Diamond",
       "options": [
-        "Diamond",
-        "Graphite",
-        "Sapphire",
-        "Emerald"
-      ]
+          "Graphite",
+          "Emerald",
+          "Sapphire",
+          "Diamond"
+        ]
     },
     {
       "question": "What does USB stand for?",
       "answer": "Universal Serial Bus",
       "options": [
-        "Universal Storage Box",
-        "Unified Serial Bus",
-        "Uniform Service Bus",
-        "Universal Serial Board"
-      ]
+          "Unified Serial Bus",
+          "Universal Storage Box",
+          "Uniform Service Bus",
+          "Universal Serial Bus"
+        ]
     },
     {
       "question": "What is the largest desert on Earth?",
       "answer": "Antarctica",
       "options": [
-        "Sahara",
-        "Gobi",
-        "Arabian",
-        "Antarctica"
-      ]
+          "Sahara",
+          "Gobi",
+          "Antarctica",
+          "Arabian"
+        ]
     },
     {
       "question": "What metal is the best conductor of electricity?",
       "answer": "Silver",
       "options": [
-        "Copper",
-        "Gold",
-        "Aluminum",
-        "Silver"
-      ]
+          "Gold",
+          "Copper",
+          "Silver",
+          "Aluminum"
+        ]
     },
     {
       "question": "What was the name of the first artificial satellite to enter space?",
       "answer": "Sputnik 1",
       "options": [
-        "Explorer 1",
-        "Vostok 1",
-        "Apollo 1",
-        "Sputnik 1"
-      ]
+          "Vostok 1",
+          "Sputnik 1",
+          "Explorer 1",
+          "Apollo 1"
+        ]
     },
-    {
+   {
       "question": "The concept of gravity was discovered by which famous physicist?",
       "answer": "Sir Isaac Newton",
       "options": [
-        "Albert Einstein",
-        "Galileo Galilei",
-        "Sir Isaac Newton",
-        "Nikola Tesla"
-      ]
+          "Albert Einstein",
+          "Galileo Galilei",
+          "Sir Isaac Newton",
+          "Nikola Tesla"
+        ]
     },
     {
       "question": "What is the capital of Greece?",
       "answer": "Athens",
       "options": [
-        "Athens",
-        "Thessaloniki",
-        "Heraklion",
-        "Patras"
-      ]
+          "Thessaloniki",
+          "Heraklion",
+          "Athens",
+          "Patras"
+        ]
     },
     {
       "question": "Which capital city has the biggest population in the world?",
       "answer": "Tokyo",
       "options": [
-        "Beijing",
-        "New Delhi",
-        "Cairo",
-        "Tokyo"
-      ]
+          "New Delhi",
+          "Cairo",
+          "Beijing",
+          "Tokyo"
+        ]
     }
       // Add more questions here...
     ];
