@@ -1,317 +1,1127 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Tic Tac Toe</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nepal GK Quiz</title>
   <style>
-    /* Reset default margin and padding */
-  * {
-      margin: 0;
-      padding: 0;
-  }
-  
-  /* Style the header */
-  .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px;
-      color: black;
-      z-index: 999; /* Set a high z-index to ensure it appears on top */
-  }
-  
-  .logo img {
-      height: 50px;
-  }
-  
-  /* Style the navigation menu */
-  .navbar ul {
-      list-style-type: none;
-      margin: 0;
-      padding:0;
-      display: flex;
-  }
-  
-  .navbar li {
-      margin-left: 10px;
-      padding-right: 40px;
-  }
-  
-  .navbar li a {
-      font-family:courier;
-      color: black;
-      text-decoration: none;
-      position: relative;
-      font-weight:bold
-  }
-  
-  .navbar li a:hover {
-      text-decoration: none;
-  }
-  
-  .navbar li a::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      background-color:#07de6f;
-      bottom: -2px;
-      left: 50%;
-      transform: translateX(-50%) scaleX(0);
-      transform-origin: center;
-      transition: transform 0.3s ease-in-out;
-  }
-  
-  .navbar li a:hover::after {
-      transform: translateX(-50%) scaleX(1);
-  }
-  
-  
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: dodgerblue;
-      color: white;
-    }
+  font-family: Arial, sans-serif;
+}
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 100px;
-    }
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
 
-    .board {
-      margin-top:30px;
-      display: grid;
-      grid-template-columns: repeat(3, 100px);
-      grid-gap:10px;
-    }
+h1 {
+  text-align: center;
+}
 
-    .cell {
-      width: 100px;
-      height: 100px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid #ccc;
-      font-size: 48px;
-      cursor: pointer;
-   
-    }
+button {
+  display: block;
+  margin: 20px auto;
+  height:40px;
+  width:100px;
+  border-radius:10px;
+  transition:0.3s;
+  background-color:white;
+}
+button:hover{background-color:black;
+color:white;}
 
-    .cell:hover {
-      transform: scale(1.05);
-    }
+.options label {
+  display: block;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-    .reset-button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color:black;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition:0.3s
-    }
+.options label:hover {
+  background-color:rgba(0,0,0,0.1); /* Green color for hover */
+  border-color: black;
+}
 
-    .reset-button:hover{
+.options input[type="radio"] {
+  display:none;
+}
 
-      background-color:white;
-      color:black;
-      box-shadow:10px white;
-    }
+.options label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  vertical-align: middle;
+}
 
-    .result-text {
-      font-size: 24px;
-      margin-top: 20px;
-   
-    }
-    h1{
-      cursor:pointer
-    }
+.options input[type="radio"]:checked + label::before {
+  background-color: #32CD32; /* Green color for correct answer */
+  border-color: #32CD32;
+}
 
+.options input[type="radio"]:not(:checked) + label::before {
+  background-color: #FF6347; /* Red color for incorrect answers */
+  border-color: #FF6347;
+}
+
+.score {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.feedback {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="logo">
-        <img src="logo.png" alt="Logo">
-    </div>
-    <nav class="navbar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="games.html">Games</a></li>
-        </ul>
-    </nav>
-</header>
-
   <div class="container">
-    <h1><u>Tic Tac Toe</u></h1>
-    <div class="board" id="board">
-      <div class="cell" onclick="makeMove(0)"></div>
-      <div class="cell" onclick="makeMove(1)"></div>
-      <div class="cell" onclick="makeMove(2)"></div>
-      <div class="cell" onclick="makeMove(3)"></div>
-      <div class="cell" onclick="makeMove(4)"></div>
-      <div class="cell" onclick="makeMove(5)"></div>
-      <div class="cell" onclick="makeMove(6)"></div>
-      <div class="cell" onclick="makeMove(7)"></div>
-      <div class="cell" onclick="makeMove(8)"></div>
-    </div>
-    <button class="reset-button" onclick="resetGame()">Play Again</button>
-    <div class="result-text" id="result-text"></div>
+    <h1>Nepal General Knowledge Quiz</h1>
+    <div class="question"></div>
+    <form class="options"></form>
+    <button onclick="checkAnswer()">Next</button>
+    <div class="score">Score: <span id="current-score">0</span>/<span id="total-questions">0</span></div>
+    <div class="feedback" style="display: none;"></div>
   </div>
+
   <script>
-    let board = ['', '', '', '', '', '', '', '', ''];
-    let currentPlayer = 'X';
-    let resultText = document.getElementById('result-text');
-    let wins = 0;
-    let losses = 0;
+    const questions = [
+      
+{
+      "question": "Which Nepali poet is known as Mahakavi?",
+      "answer": "Laxmi Prasad Devkota",
+      "options": [
+        "Laxmi Prasad Devkota",
+        "Bhanu Bhakta Acharya",
+        "Motiram Bhatta",
+        "Balkrishna Sama"
+      ]
+    },
+    {
+      "question": "What is the folk tune used in Muna Madan called?",
+      "answer": "Jhyaure Bhaka",
+      "options": [
+        "Jhyaure Bhaka",
+        "Sorathi",
+        "Gurung Selo",
+        "Dohori"
+      ]
+    },
+    {
+      "question": "Which Nepali poet is known as Kavi Shiromani?",
+      "answer": "Leknath Paudyal",
+      "options": [
+        "Leknath Paudyal",
+        "Bhanu Bhakta Acharya",
+        "Laxmi Prasad Devkota",
+        "Motiram Bhatta"
+      ]
+    },
+    {
+      "question": "Who is known as the Shakespeare of Nepal?",
+      "answer": "Balkrishna Sama",
+      "options": [
+        "Balkrishna Sama",
+        "Laxmi Prasad Devkota",
+        "Bhanu Bhakta Acharya",
+        "Motiram Bhatta"
+      ]
+    },
+    {
+      "question": "Which Nepali poet is known by the title of Adikavi?",
+      "answer": "Bhanu Bhakta Acharya",
+      "options": [
+        "Bhanu Bhakta Acharya",
+        "Leknath Paudyal",
+        "Laxmi Prasad Devkota",
+        "Motiram Bhatta"
+      ]
+    },
+    {
+      "question": "Who is known as the youth poet in Nepal?",
+      "answer": "Motiram Bhatta",
+      "options": [
+        "Motiram Bhatta",
+        "Laxmi Prasad Devkota",
+        "Bhanu Bhakta Acharya",
+        "Leknath Paudyal"
+      ]
+    },
+    {
+      "question": "Which is the biggest province in Nepal?",
+      "answer": "Karnali",
+      "options": [
+        "Karnali",
+        "Gandaki",
+        "Province No. 3",
+        "Province No. 2"
+      ]
+    },
+    {
+      "question": "Which is the biggest National Park of Nepal?",
+      "answer": "Shey Phoksundo",
+     "options": [
+        "Shey Phoksundo",
+        "Sagarmatha (Everest)",
+        "Bardiya",
+        "Chitwan"
+      ]
+    },
+    {
+      "question": "What is the length of the Koshi River?",
+      "answer": "720km",
+      "options": [
+        "720km",
+        "520km",
+        "820km",
+        "620km"
+      ]
+    },
+    {
+      "question": "Which is the tallest temple in Nepal?",
+      "answer": "Nyapatole",
+      "options": [
+        "Nyapatole",
+        "Pashupatinath",
+        "Swayambhunath",
+        "Boudhanath"
+      ]
+    },
+    {
+      "question": "What is the capital city of Egypt?",
+      "answer": "Cairo",
+      "options": [
+        "Cairo",
+        "Alexandria",
+        "Luxor",
+        "Giza"
+      ]
+    },
+    {
+      "question": "What is the currency of Belgium called?",
+      "answer": "Euro",
+      "options": [
+        "Euro",
+        "Pound",
+        "Franc",
+        "Dollar"
+      ]
+    },
+    {
+      "question": "What is the full form of SAFTA?",
+      "answer": "South Asian Free Trade Area",
+      "options": [
+        "South Asian Foreign Trade Agreement",
+        "South Asian Financial and Trade Alliance",
+        "South Asian Free Trade Agreement",
+        "South Asian Federation of Trade Associations"
+      ]
+    },
+    {
+      "question": "What is the full form of IBM?",
+      "answer": "International Business Machines",
+      "options": [
+        "International Business Machines",
+        "Internet Business Management",
+        "International Banking Machinery",
+        "Institute of Business Management"
+      ]
+    },
+    {
+      "question": "Who is the First President of the United States of America?",
+      "answer": "George Washington",
+      "options": [
+        "George Washington",
+        "Abraham Lincoln",
+        "Thomas Jefferson",
+        "John Adams"
+      ]
+    },
+    {
+      "question": "Who is the First man to set foot on the moon?",
+      "answer": "Neil Armstrong",
+      "options": [
+        "Neil Armstrong",
+        "Buzz Aldrin",
+        "Michael Collins",
+        "Alan Shepard"
+      ]
+    },
+    {
+      "question": "How many planets are there in the solar system?",
+      "answer": "8",
+      "options": [
+        "8",
+        "9",
+        "7",
+        "10"
+      ]
+    },
+    {
+      "question": "Name the national bird of Germany.",
+      "answer": "Eagle",
+      "options": [
+        "Eagle",
+        "Sparrow",
+        "Swan",
+        "Falcon"
+      ]
+    },
+    {
+      "question": "Who was the writer of the Mahabharata?",
+      "answer": "Ved Vyas",
+      "options": [
+        "Ved Vyas",
+        "Valmiki",
+        "Tulsidas",
+        "Kalidasa"
+      ]
+    },
+    {
+      "question": "How many vertebrae are there in the human body?",
+      "answer": "33",
+      "options": [
+        "33",
+        "24",
+        "42",
+        "50"
+      ]
+    },
+    {
+      "question": "Which part of the human body produces voice?",
+      "answer": "Vocal cord",
+      "options": [
+        "Vocal cord",
+        "Larynx",
+        "Trachea",
+        "Pharynx"
+      ]
+    },
+    {
+      "question": "Which is the smallest bone of the human body?",
+      "answer": "Stapes",
+      "options": [
+        "Stapes",
+        "Coccyx",
+        "Femur",
+        "Ulna"
+      ]
+    },
+    {
+      "question": "What is the height of the heart in an average human being?",
+      "answer": "300gm",
+      "options": [
+        "300gm",
+        "200gm",
+        "400gm",
+        "500gm"
+      ]
+    },
+    {
+      "question": "What is the largest organ in the human body?",
+      "answer": "Skin",
+      "options": [
+        "Skin",
+        "Liver",
+        "Brain",
+        "Lungs"
+      ]
+    },
+    {
+      "question": "How many members are there in SAARC?",
+      "answer": "8",
+      "options": [
+        "8",
+        "7",
+        "9",
+        "10"
+      ]
+    },
+    {
+      "question": "From the number 0 to the number 1000, the letter 'A' appears only in?",
+      "answer": "1000",
+      "options": [
+        "1000",
+        "500",
+        "100",
+        "900"
+      ]
+    },
+    {
+      "question": "How many vertices are present on a cube?",
+      "answer": "8",
+      "options": [
+        "8",
+        "6",
+        "10",
+        "12"
+      ]
+    },
+    {
+      "question": "What is the next prime number after 5?",
+      "answer": "7",
+      "options": [
+        "7",
+        "6",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "question": "The product of 131 x 0 x 300 x 4 is?",
+      "answer": "0",
+      "options": [
+        "0",
+        "131",
+        "300",
+        "4"
+      ]
+    },
+    {
+      "question": "What 3 numbers result in the same answer when they are added or multiplied altogether?",
+      "answer": "1, 2, and 3",
+      "options": [
+        "1, 2, and 3",
+        "4, 5, and 6",
+        "7, 8, and 9",
+        "10, 11, and 12"
+      ]
+    },
+    {
+      "question": "When was the division of 14 zones and 75 districts?",
+      "answer": "2018 Baishakh 01",
+      "options": [
+        "2018 Baishakh 01",
+        "2020 Ashar 01",
+        "2016 Magh 01",
+        "2019 Jestha 01"
+      ]
+    },
+    {
+      "question": "How many MW of electricity has been produced in Nepal so far?",
+      "answer": "1142 MW",
+      "options": [
+        "1142 MW",
+        "1000 MW",
+        "1250 MW",
+        "900 MW"
+      ]
+    },
+    {
+      "question": "When is earthquake day celebrated in Nepal?",
+      "answer": "Magh 2",
+      "options": [
+        "Magh 2",
+        "Baishakh 12",
+        "Shrawan 16",
+        "Ashoj 10"
+      ]
+    },
+    {
+      "question": "In which district does the Chinamasta's temple belong?",
+      "answer": "Saptari",
+      "options": [
+        "Saptari",
+        "Kathmandu",
+        "Lalitpur",
+        "Bhaktapur"
+      ]
+    },
+    {
+      "question": "Which national figure of Nepal is known as 'Himalki Chhori'?",
+      "answer": "Pasang Lhamu Sherpa",
+      "options": [
+        "Pasang Lhamu Sherpa",
+        "Anuradha Koirala",
+        "Sarala Thapa",
+        "Usha Nepal"
+      ]
+    },
+    {
+      "question": "Which district lies in Zakhira Lake?",
+      "answer": "Kapilvastu",
+      "options": [
+        "Kapilvastu",
+        "Sunsari",
+        "Morang",
+        "Rupandehi"
+      ]
+    },
+    {
+      "question": "By what name is the Bhandarkal festival known?",
+      "answer": "Basnet Parwa",
+      "options": [
+        "Basnet Parwa",
+        "Dashain",
+        "Tihar",
+        "Holi"
+      ]
+    },
+    {
+      "question": "How many trade points have been opened between Nepal and India?",
+      "answer": "27",
+      "options": [
+        "27",
+        "20",
+        "30",
+        "35"
+      ]
+    },
+    {
+      "question": "Which is the smallest district of Nepal after the local level division?",
+      "answer": "Bhaktapur",
+      "options": [
+        "Bhaktapur",
+        "Lalitpur",
+        "Kathmandu",
+        "Sindhupalchowk"
+      ]
+    },
+     {
+      "question": "Where is the 'Ghorne' waterfall?",
+      "answer": "Sankhuwasabha",
+      "options": [
+        "Sankhuwasabha",
+        "Taplejung",
+        "Dhankuta",
+        "Panchthar"
+      ]
+    },
+    {
+      "question": "Who was the first to use the word 'Jai Nepal'?",
+      "answer": "Shukraraj Shastri",
+      "options": [
+        "Shukraraj Shastri",
+        "Girija Prasad Koirala",
+        "Bishweshwar Prasad Koirala",
+        "Subarna Shamsher Rana"
+      ]
+    },
+    {
+      "question": "How many national pride projects are there in Nepal right now?",
+      "answer": "23",
+      "options": [
+        "23",
+        "20",
+        "25",
+        "30"
+      ]
+    },
+    {
+      "question": "What percentage of the total land area of Nepal is cultivated land?",
+      "answer": "17.97%",
+      "options": [
+        "17.97%",
+        "12.5%",
+        "21.3%",
+        "14.75%"
+      ]
+    },
+    {
+      "question": "Which is Nepal's first highway?",
+      "answer": "Tribhuvan Highway",
+      "options": [
+        "Tribhuvan Highway",
+        "Prithvi Highway",
+        "Mahendra Highway",
+        "Arniko Highway"
+      ]
+    },
+    {
+      "question": "What is the name of the road from Kathmandu to Pokhara?",
+      "answer": "Prithvi Highway",
+      "options": [
+        "Prithvi Highway",
+        "Mahendra Highway",
+        "Tribhuvan Highway",
+        "Arniko Highway"
+      ]
+    },
+    {
+      "question": "What is called the blank sheet on the front and back of the book?",
+      "answer": "Fly Leaf",
+      "options": [
+        "Fly Leaf",
+        "Cover Leaf",
+        "Endpaper",
+        "Title Page"
+      ]
+    },
+    {
+      "question": "Who is the 'Zero' Inventor?",
+      "answer": "Aryabhata",
+      "options": [
+        "Aryabhata",
+        "Brahmagupta",
+        "Bhaskara I",
+        "Varahamihira"
+      ]
+    },
+    {
+      "question": "From which district did tea cultivation originate in Nepal?",
+      "answer": "Ilam",
+      "options": [
+        "Ilam",
+        "Dhankuta",
+        "Panchthar",
+        "Jhapa"
+      ]
+    },
+    {
+      "question": "बिबिसी नेपाली सेवाका सम्पादक को हुन् ?",
+      "answer": "रबिन्द्र मिश्र",
+      "options": [
+        "रबिन्द्र मिश्र",
+        "युवराज घिमिरे",
+        "भावना श्रेष्ठ",
+        "मोहन बुढ्दा"
+      ]
+    },
+    {
+      "question": "चेस खेलको सुरु कुन देशबाट भएको हो ?",
+      "answer": "भारत",
+      "options": [
+        "भारत",
+        "नेपाल",
+        "बांग्लादेश",
+        "पाकिस्तान"
+      ]
+    },
+    {
+      "question": "चादिको मोहर चलनचल्तिमा ल्याउने मल्ल राजा को हुन?",
+      "answer": "महेन्द्र मल्ल",
+      "options": [
+        "महेन्द्र मल्ल",
+        "प्रताप मल्ल",
+        "जयपुर मल्ल",
+        "राणा बहादुर"
+      ]
+    },
+    {
+      "question": "नेपाल को सबै भन्दा ठुलो ताल कुन हो र कुन जील्ला मा पर्छ ?",
+      "answer": "रारा ताल मुगु जील्लामा पर्छ",
+      "options": [
+        "रारा ताल मुगु जील्लामा पर्छ",
+        "फेवा ताल कैलाली जील्लामा पर्छ",
+        "बेग्लासो ताल मोरङ जील्लामा पर्छ",
+        "जनकपुर दहा जील्लामा पर्छ"
+      ]
+    },
+    {
+      "question": "बिश्वको कुल क्षेत्रफलको कति प्रतिशत भूभाग नेपालले ओगटेको छ ?",
+      "answer": "०.०३ प्रतिशत",
+      "options": [
+        "०.०३ प्रतिशत",
+        "१.५ प्रतिशत",
+        "०.१ प्रतिशत",
+        "०.५ प्रतिशत"
+      ]
+    },
+    {
+      "question": "एसियाको कुल क्षेत्रफलको कति प्रतिशत भूभाग नेपालले ओगटेको छ ?",
+      "answer": "०.३ प्रतिशत",
+      "options": [
+        "०.३ प्रतिशत",
+        "१.५ प्रतिशत",
+        "०.१ प्रतिशत",
+        "०.५ प्रतिशत"
+      ]
+    },
+    {
+      "question": "नेपालको सबैभन्दा होचो भूभाग कुन जील्ला मा पर्छ?",
+      "answer": "धनुषा जील्ला",
+      "options": [
+        "धनुषा जील्ला",
+        "महोत्तरी जील्ला",
+        "सर्लाही जील्ला",
+        "सिराहा जील्ला"
+      ]
+    },
+    {
+      "question": "“द लाईट अफ एसिया” भनी कसलाई चिनिन्छ ?",
+      "answer": "गौतम बुद्द",
+      "options": [
+        "गौतम बुद्द",
+        "अशोक विक्रमादित्य",
+        "चंद्रगुप्त मौर्य",
+        "आशोक शह"
+      ]
+    },
+    {
+      "question": "सबभन्दा पुरानो धातु कुनलाई मानिन्छ ?",
+      "answer": "तामा",
+      "options": [
+        "तामा",
+        "चाँदी",
+        "सोना",
+        "आयरन"
+      ]
+    },
+    {
+      "question": "प्रहरी र जेल नभएको देश कुन हो ?",
+      "answer": "आइस्ल्यान्ड",
+      "options": [
+        "आइस्ल्यान्ड",
+        "नोर्वे",
+        "स्वीडन",
+        "फिनल्याण्ड"
+      ]
+    },
+    {
+      "question": "सबैभन्दा पुरानो धातु तामा हो भने सबैभन्दि बढि प्रयोग हुने धातु कुन हो ?",
+      "answer": "फलाम",
+      "options": [
+        "फलाम",
+        "तामा",
+        "चाँदी",
+        "सोना"
+      ]
+    },
+    {
+      "question": "बुद्धलाई विष्णुको कति औं अवतार मानिन्छ ?",
+      "answer": "नवौं",
+      "options": [
+        "नवौं",
+        "दशम",
+        "अष्टम",
+        "श्रीवत्स"
+      ]
+    },
+    {
+      "question": "पानी मुनिको देश भनेर कुन देशलाई चिनिन्छ ?",
+      "answer": "नेदरल्याण्ड",
+      "options": [
+        "नेदरल्याण्ड",
+        "जर्मनी",
+        "स्विजरल्याण्ड",
+        "फ्रान्स"
+      ]
+    },
+    {
+      "question": "नेपालको निशाना छापमा कति वटा लालिगुरास छन ?",
+      "answer": "१४",
+      "options": [
+        "१४",
+        "१०",
+        "१२",
+        "१६"
+      ]
+    },
+    {
+      "question": "नेपालको कान्छो जिल्ला (district) कुन हो ?",
+      "answer": "पश्चिम रुकुम",
+      "options": [
+        "पश्चिम रुकुम",
+        "डोल्पा",
+        "मुगु",
+        "मनाङ"
+      ]
+    },
+    {
+      "question": "Who said this slogan : “अरुलाई उपदेश दिनेबेला सबै सज्जन हुन्छन् ?",
+      "answer": "तुलसिदास",
+      "options": [
+        "तुलसिदास",
+        "भानुभक्त",
+        "लक्ष्मीप्रसाद",
+        "भूपी"
+      ]
+    },
+    {
+      "question": "नेपालको कुन हिमाललाई किलर माउन्टेनका नामले समेत चिनिन्छ ?",
+      "answer": "मनास्लु हिमाल",
+      "options": [
+        "मनास्लु हिमाल",
+        "एभरेस्ट",
+        "कञ्चन्जंघा",
+        "ल्होट्से"
+      ]
+    },
+    {
+      "question": "भगवान शिवको नृत्य गर्दा को नाम के हो ?",
+      "answer": "नटराज",
+      "options": [
+        "नटराज",
+        "भोलेनाथ",
+        "महादेव",
+        "शंकर"
+      ]
+    },
+    {
+      "question": "रानी पोखरी प्रताप मल्लले बनाएका हुन भने पशुपति मन्दिर कसले बनाएका हुन ?",
+      "answer": "प्रचण्डदेव",
+      "options": [
+        "प्रचण्डदेव",
+        "प्रतापमल्ल",
+        "यक्ष्यमाल्ल",
+        "जयप्रकाशमल्ल"
+      ]
+    },
+    {
+      "question": "नेपालको सबैभन्दा ठुलो दरबार कुन हो ?",
+      "answer": "सिँहदरबार",
+      "options": [
+        "सिँहदरबार",
+        "बसन्तपुर दरबार",
+        "रत्नदरबार",
+        "घण्टाघर दरबार"
+      ]
+    },
+    {
+      "question": "घोडाघोडी ताल कुन जिल्लामा पर्दछ ?",
+      "answer": "कैलाली जिल्ला",
+      "options": [
+        "कैलाली जिल्ला",
+        "बाजुरा जिल्ला",
+        "बैतडी जिल्ला",
+        "दाङ्ग जिल्ला"
+      ]
+    },
+    {
+      "question": "What is the world's largest mammal?",
+      "answer": "Antarctic blue whale",
+      "options": [
+        "Antarctic blue whale",
+        "African elephant",
+        "Giraffe",
+        "Hippopotamus"
+      ]
+    },
+    {
+      "question": "What is the fastest land animal?",
+      "answer": "Cheetah",
+      "options": [
+        "Cheetah",
+        "Lion",
+        "Leopard",
+        "Gazelle"
+      ]
+    },
+    {
+      "question": "Which mammal is known for carrying its young in a pouch?",
+      "answer": "Kangaroo",
+      "options": [
+        "Kangaroo",
+        "Koala",
+        "Opossum",
+        "Platypus"
+      ]
+    },
+    {
+      "question": "Which animal sleeps the longest at a record 20-22 hours a day?",
+      "answer": "Koalas",
+      "options": [
+        "Koalas",
+        "Sloth",
+        "Panda",
+        "Bat"
+      ]
+    },
+    {
+      "question": "Which animal sleeps the least at two hours a day on average?",
+      "answer": "Elephant",
+      "options": [
+        "Elephant",
+        "Giraffe",
+        "Horse",
+        "Camel"
+      ]
+    },
+    {
+      "question": "What is the only known mammal with scales?",
+      "answer": "Pangolin",
+      "options": [
+        "Pangolin",
+        "Armadillo",
+        "Aardvark",
+        "Anteater"
+      ]
+    },
+    {
+      "question": "What is the only bird known to fly backwards?",
+      "answer": "Hummingbird",
+      "options": [
+        "Hummingbird",
+        "Eagle",
+        "Sparrow",
+        "Pigeon"
+      ]
+    },
+    {
+      "question": "What insect can taste with its feet?",
+      "answer": "Butterfly",
+      "options": [
+        "Butterfly",
+        "Bee",
+        "Ant",
+        "Dragonfly"
+      ]
+    },
+    {
+      "question": "Which animal has the longest pregnancy of any mammal?",
+      "answer": "African elephant",
+      "options": [
+        "African elephant",
+        "Blue whale",
+        "Giraffe",
+        "Hippopotamus"
+      ]
+    },
+    {
+      "question": "Who can see more colours, humans or birds?",
+      "answer": "Birds",
+      "options": [
+        "Birds",
+        "Humans",
+        "Dogs",
+        "Cats"
+      ]
+    },
+    {
+      "question": "How many legs does a spider typically have?",
+      "answer": "8",
+      "options": [
+        "8",
+        "6",
+        "10",
+        "12"
+      ]
+    },
+    {
+      "question": "Which bird is known for its beautiful tail feathers and courtship dance?",
+      "answer": "Peacock",
+      "options": [
+        "Peacock",
+        "Eagle",
+        "Swan",
+        "Penguin"
+      ]
+    },
+    {
+      "question": "What is the capital of Spain?",
+      "answer": "Madrid",
+      "options": [
+        "Madrid",
+        "Barcelona",
+        "Valencia",
+        "Seville"
+      ]
+    },
+    {
+      "question": "What is the capital of India?",
+      "answer": "New Delhi",
+      "options": [
+        "New Delhi",
+        "Mumbai",
+        "Kolkata",
+        "Bangalore"
+      ]
+    },
+    {
+      "question": "What is the capital of Germany?",
+      "answer": "Berlin",
+      "options": [
+        "Berlin",
+        "Munich",
+        "Hamburg",
+        "Frankfurt"
+      ]
+    },
+     {
+      "question": "Which city is known as the \"capital of Europe\"?",
+      "answer": "Brussels",
+      "options": [
+        "Brussels",
+        "Paris",
+        "Berlin",
+        "London"
+      ]
+    },
+    {
+      "question": "What is the capital of Egypt?",
+      "answer": "Cairo",
+      "options": [
+        "Cairo",
+        "Alexandria",
+        "Luxor",
+        "Giza"
+      ]
+    },
+    {
+      "question": "What is the hardest natural substance on Earth?",
+      "answer": "Diamond",
+      "options": [
+        "Diamond",
+        "Graphite",
+        "Sapphire",
+        "Emerald"
+      ]
+    },
+    {
+      "question": "What does USB stand for?",
+      "answer": "Universal Serial Bus",
+      "options": [
+        "Universal Storage Box",
+        "Unified Serial Bus",
+        "Uniform Service Bus",
+        "Universal Serial Board"
+      ]
+    },
+    {
+      "question": "What is the largest desert on Earth?",
+      "answer": "Antarctica",
+      "options": [
+        "Sahara",
+        "Gobi",
+        "Arabian",
+        "Antarctica"
+      ]
+    },
+    {
+      "question": "What metal is the best conductor of electricity?",
+      "answer": "Silver",
+      "options": [
+        "Copper",
+        "Gold",
+        "Aluminum",
+        "Silver"
+      ]
+    },
+    {
+      "question": "What was the name of the first artificial satellite to enter space?",
+      "answer": "Sputnik 1",
+      "options": [
+        "Explorer 1",
+        "Vostok 1",
+        "Apollo 1",
+        "Sputnik 1"
+      ]
+    },
+    {
+      "question": "The concept of gravity was discovered by which famous physicist?",
+      "answer": "Sir Isaac Newton",
+      "options": [
+        "Albert Einstein",
+        "Galileo Galilei",
+        "Sir Isaac Newton",
+        "Nikola Tesla"
+      ]
+    },
+    {
+      "question": "What is the capital of Greece?",
+      "answer": "Athens",
+      "options": [
+        "Athens",
+        "Thessaloniki",
+        "Heraklion",
+        "Patras"
+      ]
+    },
+    {
+      "question": "Which capital city has the biggest population in the world?",
+      "answer": "Tokyo",
+      "options": [
+        "Beijing",
+        "New Delhi",
+        "Cairo",
+        "Tokyo"
+      ]
+    }
+      // Add more questions here...
+    ];
 
-    function makeMove(index) {
-      if (board[index] === '') {
-        board[index] = currentPlayer;
-        document.getElementsByClassName('cell')[index].innerText = currentPlayer;
+    let currentQuestion = 0;
+    let score = 0;
 
-        if (checkWin(currentPlayer)) {
-          resultText.innerText = `${currentPlayer} wins!`;
-          resultText.style.color = currentPlayer === 'X' ? 'lime' : 'gold';
-          updateScore(currentPlayer === 'X' ? 'wins' : 'losses');
-          disableBoard();
-        } else if (checkDraw()) {
-          resultText.innerText = "It's a draw!";
-          resultText.style.color = 'yellow';
-          disableBoard();
+    const totalQuestions = questions.length;
+    const currentScoreElement = document.getElementById("current-score");
+    const totalQuestionsElement = document.getElementById("total-questions");
+    const feedbackElement = document.querySelector(".feedback");
+
+    function displayQuestion() {
+      const questionContainer = document.querySelector(".question");
+      const optionsForm = document.querySelector(".options");
+      optionsForm.innerHTML = "";
+
+      const questionText = document.createElement("div");
+      questionText.textContent = questions[currentQuestion].question;
+      questionContainer.innerHTML = "";
+      questionContainer.appendChild(questionText);
+
+      questions[currentQuestion].options.forEach((option, index) => {
+        const optionLabel = document.createElement("label");
+        optionLabel.textContent = option;
+
+        const optionInput = document.createElement("input");
+        optionInput.type = "radio";
+        optionInput.name = "answer";
+        optionInput.value = option;
+
+        optionLabel.appendChild(optionInput);
+        optionsForm.appendChild(optionLabel);
+      });
+    }
+
+    function checkAnswer() {
+      const selectedOption = document.querySelector('input[name="answer"]:checked');
+
+      if (selectedOption) {
+        const userAnswer = selectedOption.value;
+        const correctAnswer = questions[currentQuestion].answer;
+        const feedback = document.createElement("p");
+
+        if (userAnswer === correctAnswer) {
+          score++;
+          feedback.textContent = "Correct!";
+          feedbackElement.style.color = "#32CD32"; // Green color for correct answer feedback
         } else {
-          currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-          if (currentPlayer === 'O') {
-            setTimeout(makeComputerMove, 500);
-          }
+          feedback.textContent = `Incorrect! The correct answer is ${correctAnswer}.`;
+          feedbackElement.style.color = "#FF6347"; // Red color for incorrect answer feedback
+        }
+
+        feedbackElement.style.display = "block";
+        feedbackElement.textContent = `Correct answer: ${correctAnswer}`;
+        document.querySelector(".container").appendChild(feedback);
+
+        currentQuestion++;
+        updateScore();
+
+        if (currentQuestion < totalQuestions) {
+          displayQuestion();
+        } else {
+          showResults();
         }
       }
     }
 
-    function makeComputerMove() {
-      let emptyCells = board.reduce((acc, val, index) => {
-        if (val === '') acc.push(index);
-        return acc;
-      }, []);
-
-      let randomIndex = Math.floor(Math.random() * emptyCells.length);
-      let computerMove = emptyCells[randomIndex];
-      makeMove(computerMove);
+    function updateScore() {
+      currentScoreElement.textContent = score;
+      totalQuestionsElement.textContent = totalQuestions;
     }
 
-    function checkWin(player) {
-      const winPatterns = [
-        [0, 1, 2], [3, 4, 5], [6, 7, 8],
-        [0, 3, 6], [1, 4, 7], [2, 5, 8],
-        [0, 4, 8], [2, 4, 6]
-      ];
-
-      return winPatterns.some(pattern =>
-        pattern.every(index => board[index] === player)
-      );
+    function showResults() {
+      const container = document.querySelector(".container");
+      container.innerHTML = `
+        <h1>Quiz Complete!</h1>
+        <p>Your final score is: ${score}/${totalQuestions}</p>
+      `;
     }
 
-    function checkDraw() {
-      return board.every(cell => cell !== '');
-    }
-
-    function disableBoard() {
-      const cells = document.getElementsByClassName('cell');
-      for (let i = 0; i < cells.length; i++) {
-        cells[i].removeAttribute('onclick');
-      }
-    }
-
-    function resetBoard() {
-      board = ['', '', '', '', '', '', '', '', ''];
-      currentPlayer = 'X';
-      const cells = document.getElementsByClassName('cell');
-      for (let i = 0; i < cells.length; i++) {
-        cells[i].innerText = '';
-        cells[i].setAttribute('onclick', `makeMove(${i})`);
-      }
-      resultText.innerText = '';
-    }
-
-    function updateScore(outcome) {
-      if (outcome === 'wins') {
-        wins++;
-      } else if (outcome === 'losses') {
-        losses++;
-      }
-      document.getElementById('score-text').innerText = `Wins: ${wins} - Losses: ${losses}`;
-    }
-
-    function resetGame() {
-      resetBoard();
-      document.getElementById('score-text').innerText = 'Wins: 0 - Losses: 0';
-    }
-
-    resetBoard();
-
-    /* ... (previous functions remain the same) ... */
-
-    function makeComputerMove() {
-      let bestScore = -Infinity;
-      let move;
-
-      for (let i = 0; i < 9; i++) {
-        if (board[i] === '') {
-          board[i] = 'O';
-          let score = minimax(board, 0, false);
-          board[i] = '';
-          if (score > bestScore) {
-            bestScore = score;
-            move = i;
-          }
-        }
-      }
-
-      makeMove(move);
-    }
-
-    function minimax(board, depth, isMaximizing) {
-      if (checkWin('O')) return 1;
-      if (checkWin('X')) return -1;
-      if (checkDraw()) return 0;
-
-      if (isMaximizing) {
-        let bestScore = -Infinity;
-        for (let i = 0; i < 9; i++) {
-          if (board[i] === '') {
-            board[i] = 'O';
-            let score = minimax(board, depth + 1, false);
-            board[i] = '';
-            bestScore = Math.max(bestScore, score);
-          }
-        }
-        return bestScore;
-      } else {
-        let bestScore = Infinity;
-        for (let i = 0; i < 9; i++) {
-          if (board[i] === '') {
-            board[i] = 'X';
-            let score = minimax(board, depth + 1, true);
-            board[i] = '';
-            bestScore = Math.min(bestScore, score);
-          }
-        }
-        return bestScore;
-      }
-    }
-
-
+    // Start the quiz by displaying the first question
+    displayQuestion();
+    updateScore();
   </script>
 </body>
 </html>
